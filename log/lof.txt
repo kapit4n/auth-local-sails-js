@@ -1,0 +1,86 @@
+
+http://localhost:1337/auth/local
+
+request POST
+{
+    "identifier": "admin@example.com",
+    "password": "admin1234"
+}
+
+response
+{
+    "createdBy": 1,
+    "owner": 1,
+    "username": "admin",
+    "email": "admin@example.com",
+    "model": 2,
+    "createdAt": "2016-09-26T17:47:09.047Z",
+    "updatedAt": "2016-09-26T17:47:09.319Z",
+    "id": 1,
+    "gravatarUrl": "https://gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61"
+}
+
+
+ Excuse my interruption, but it looks like this app
+ does not have a project-wide "migrate" setting configured yet.
+ (perhaps this is the first time you're lifting it with models?)
+
+ In short, this setting controls whether/how Sails will attempt to automatically
+ rebuild the tables/collections/sets/etc. in your database schema.
+ You can read more about the "migrate" setting here:
+ http://sailsjs.org/#!/documentation/concepts/ORM/model-settings.html?q=migrate
+
+ In a production environment (NODE_ENV==="production") Sails always uses
+ migrate:"safe" to protect inadvertent deletion of your data.
+ However during development, you have a few other options for convenience:
+
+ 1. safe  - never auto-migrate my database(s). I will do it myself (by hand)
+ 2. alter - auto-migrate, but attempt to keep my existing data (experimental)
+ 3. drop  - wipe/drop ALL my data and rebuild models every time I lift Sails
+
+What would you like Sails to do?
+
+info: To skip this prompt in the future, set `sails.config.models.migrate`.
+info: Usually this is done in a config file (e.g. `config/models.js`),
+info: or as an override (e.g. `sails lift --models.migrate='alter').
+
+warn: ** DO NOT CHOOSE "2" or "3" IF YOU ARE WORKING WITH PRODUCTION DATA **
+
+prompt: ?:  2
+
+ Temporarily using `sails.config.models.migrate="alter"...
+ (press CTRL+C to cancel-- continuing lift automatically in 0.5 seconds...)
+
+info: sails-permissions: admin user does not exist; creating...
+debug: User.afterCreate.attachDefaultRole { username: 'admin',
+  email: 'admin@example.com',
+  createdBy: 1,
+  owner: 1,
+  model: 2,
+  createdAt: '2016-09-26T17:47:09.047Z',
+  updatedAt: '2016-09-26T17:47:09.067Z',
+  id: 1 }
+debug: sails-permissions: created admin user: { createdBy: 1,
+  owner: 1,
+  username: 'admin',
+  email: 'admin@example.com',
+  model: 2,
+  createdAt: '2016-09-26T17:47:09.047Z',
+  updatedAt: '2016-09-26T17:47:09.189Z',
+  id: 1 }
+info:
+info:                .-..-.
+info:
+info:    Sails              <|    .-..-.
+info:    v0.12.4             |\
+info:                       /|.\
+info:                      / || \
+info:                    ,'  |'  \
+info:                 .-'.-==|/_--'
+info:                 `--'-------'
+info:    __---___--___---___--___---___--___
+info:  ____---___--___---___--___---___--___-__
+info:
+info: Server lifted in `D:\projects\mockup\testProject`
+info: To see your app, visit http://localhost:1337
+info: To shut down Sails, press <CTRL> + C at any time.
